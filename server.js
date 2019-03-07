@@ -25,19 +25,14 @@ expressApp.post("/webhook", function(req, res, next) {
   });
 
   gapp.intent("Find weather", conv => {
-    const apiKey = "4970e4f266675063af77ad454f45ebd6";
+    // const apiKey = "4970e4f266675063af77ad454f45ebd6";
     const cityName = agent.parameters.name;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    request(url, function(err, response, body) {
-      let weather = JSON.parse(body);
+    // const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
 
-      console.log(cityName);
-      conv.add(
-        `The current weather in the ${cityName}  is ${weather.main.temp} and ${
-          weather.main.humidity
-        } humidity `
-      );
-    });
+    console.log(cityName);
+    conv.add(
+      `The current weather in the ${cityName}is..................... `
+    );
   });
 
   gapp.intent("Default Welcome Intent", conv => {

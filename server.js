@@ -17,5 +17,5 @@ gapp.intent("Default Fallback Intent", conv => {
 const expressApp = express().use(bodyParser.json());
 expressApp.post("/webhook", gapp);
 expressApp.listen(3000, function() {
-  console.log("app is running on 3000");
+  console.log("app is running in 3000");
 });

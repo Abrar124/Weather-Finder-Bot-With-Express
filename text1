@@ -9,8 +9,8 @@ const expressApp = express().use(bodyParser.json());
 expressApp.post("/webhook", function(req, res, next) {
   // const agent = new WebhookClient({ request, response });
   const gapp = dialogflow({
-    request: req,
-    response: response,
+    req: req,
+    res: res
   });
 
   // gapp.intent("Find weather", conv => {

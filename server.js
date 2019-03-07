@@ -14,21 +14,21 @@ expressApp.post("/webhook", function(request, response, next) {
   //   response: response
   // });
 
-  gapp.intent("Find weather", conv => {
-    const apiKey = "4970e4f266675063af77ad454f45ebd6";
-    const cityName = gapp.parameters.name;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    request(url, function(err, response, body) {
-      let weather = JSON.parse(body);
+  // gapp.intent("Find weather", conv => {
+  //   const apiKey = "4970e4f266675063af77ad454f45ebd6";
+  //   const cityName = gapp.parameters.name;
+  //   const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
+  //   request(url, function(err, response, body) {
+  //     let weather = JSON.parse(body);
 
-      console.log(cityName);
-      conv.add(
-        `The current weather in the ${cityName}  is ${weather.main.temp} and ${
-          weather.main.humidity
-        } humidity `
-      );
-    });
-  });
+  //     console.log(cityName);
+  //     conv.add(
+  //       `The current weather in the ${cityName}  is ${weather.main.temp} and ${
+  //         weather.main.humidity
+  //       } humidity `
+  //     );
+  //   });
+  // });
 
   // gapp.intent("Find weather", conv => {
   //   // const apiKey = "4970e4f266675063af77ad454f45ebd6";

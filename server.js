@@ -17,10 +17,20 @@ var request = require("request");
 
 const { WebhookClient } = require("dialogflow-fulfillment");
 
+
+let apiKey='4970e4f266675063af77ad454f45ebd6';
+let url=`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
+
 const expressApp = express().use(bodyParser.json());
 
 expressApp.post("/webhook", function (request, response, next) {
   const agent = new WebhookClient({ request: request, response: response });
+
+
+  function Find_weather(agent) {
+    agent.add(`The weather is:`);
+  }
+  
 
   function welcome(agent) {
     agent.add(`Good day! What can I do for you today?`);
@@ -33,6 +43,7 @@ expressApp.post("/webhook", function (request, response, next) {
   let intentMap = new Map();
   intentMap.set("Default Welcome Intent", welcome);
   intentMap.set("Default Fallback Intent", fallback);
+  intentMap.set("Find weather", Find_weather);
 
   agent.handleRequest(intentMap);
 

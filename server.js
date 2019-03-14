@@ -31,20 +31,17 @@ expressApp.post("/webhook", function (request, response, next) {
     console.log(cityName);
     let apiKey = '4970e4f266675063af77ad454f45ebd6';
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    // request(url, function (err, response, body) {
-    //   if (err) {
-    //     console.log('error:', error);
-    //   } else {
-    //     let weather = JSON.parse(body)
-    //     let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} humidity !`;
-    //     console.log(message);
-    //   }
-    // });
-    let weather = JSON.parse(body)
-    const temperature = weather.main.temp;
-    
+    request(url, function (err, response, body) {
+      if (err) {
+        console.log('error:', error);
+      } else {
+        let weather = JSON.parse(body)
+        let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} humidity !`;
+        console.log(message);
+      }
+    });
 
-    agent.add(`The weather for the city ${cityName} is: ${temperature} degree  `);
+    agent.add(`The weather for the city ${cityName} is: ${weather.main.temp} degrees `);
   }
 
 

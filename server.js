@@ -18,8 +18,7 @@ var request = require("request");
 const { WebhookClient } = require("dialogflow-fulfillment");
 
 
-// let apiKey='4970e4f266675063af77ad454f45ebd6';
-// let url=`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
+
 
 const expressApp = express().use(bodyParser.json());
 
@@ -28,9 +27,13 @@ expressApp.post("/webhook", function (request, response, next) {
 
 
   function weatherFinder(agent) {
-    agent.add(`The weather is:`);
+    const cityName= agent.parameters.city;
+    console.log(cityName);
+    // let apiKey = '4970e4f266675063af77ad454f45ebd6';
+    // let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
+    agent.add(`The weather for the city ${cityName} is:`);
   }
-  
+
 
   function welcome(agent) {
     agent.add(`Good day! What can I do for you today?`);

@@ -27,11 +27,11 @@ expressApp.post("/webhook", function (request, response, next) {
   //    conv.add(`The current weather in the  is `);
   // });
 
-  agent.intent("Default Welcome Intent", conv => {
+  agent.intent("Default Welcome Intent", agent => {
     agent.add("Hi, I will help you to find weather");
   });
 
-  agent.intent("Default Fallback Intent", conv => {
+  agent.intent("Default Fallback Intent", agent => {
     agent.add(`I didn't understand. Can you tell me something else?`);
   });
 });

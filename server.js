@@ -27,11 +27,21 @@ expressApp.post("/webhook", function (request, response, next) {
 
 
   function weatherFinder(agent) {
-    const cityName= agent.parameters.city;
+    const cityName = agent.parameters.city;
     console.log(cityName);
-    // let apiKey = '4970e4f266675063af77ad454f45ebd6';
-    // let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    agent.add(`The weather for the city ${cityName} is:`);
+    let apiKey = '4970e4f266675063af77ad454f45ebd6';
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
+    request(url, function (err, response, body) {
+      if (err) {
+        console.log('error:', error);
+      } else {
+        let weather = JSON.parse(body)
+        let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} humidity !`;
+        console.log(message);
+      }
+    });
+
+    agent.add(`The weather for the city ${cityName} is: ${message}  `);
   }
 
 

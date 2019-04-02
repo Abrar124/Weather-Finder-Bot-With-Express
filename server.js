@@ -39,9 +39,9 @@ expressApp.post("/webhook", function (request, response, next) {
         let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} humidity !`;
         console.log(message);
        
-        agent.add(`The weather for the city ${cityName} is: ${weather.main.temp} degrees `);
       }
     });
+    agent.add(`The weather for the city ${cityName} is: ${weather.main.temp} degrees `);
 
   }
 

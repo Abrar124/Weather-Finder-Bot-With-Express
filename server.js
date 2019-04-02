@@ -38,8 +38,10 @@ expressApp.post("/webhook", function (request, response, next) {
         let weather = JSON.parse(body)
         let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} humidity !`;
         console.log(message);
+        let temp = weather.main.temp;
+        console.log(temp);
        
-        agent.add(`The weather for the city ${cityName} is: ${weather.main.temp} degrees `);
+        agent.add(`The weather for the city ${cityName} is: ${temp} degrees `);
       }
     });
 

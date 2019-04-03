@@ -44,7 +44,7 @@ expressApp.post("/webhook", function (request, response, next) {
        
         agent.add(`The weather for the city ${cityName} is: ${temp} degrees `);
       }
-      agent.add(`The weather for the city ${cityName} is: ${temp} degrees `);
+      agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
     });
 
   }

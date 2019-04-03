@@ -13,7 +13,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 var req = require("request");
-const http = require('http');
 
 const { WebhookClient } = require("dialogflow-fulfillment");
 
@@ -31,7 +30,7 @@ expressApp.post("/webhook", function(request, response, next) {
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
     
     
-     http.get(url, function(err, response, body) {
+   return req.get(url, function(err, response, body) {
       if (err) {
         console.log("error:", err);
         agent.add("Error while getting weather report");

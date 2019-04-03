@@ -1,4 +1,3 @@
-
 // const apiKey = "4970e4f266675063af77ad454f45ebd6";
 // const cityName = 'karachi';
 
@@ -15,41 +14,40 @@ const express = require("express");
 const bodyParser = require("body-parser");
 var req = require("request");
 
-
 const { WebhookClient } = require("dialogflow-fulfillment");
-
-
-
 
 const expressApp = express().use(bodyParser.json());
 
-expressApp.post("/webhook", function (request, response, next) {
+expressApp.post("/webhook", function(request, response, next) {
   const agent = new WebhookClient({ request: request, response: response });
 
-
   function weatherFinder(agent) {
+
     const cityName = agent.parameters.city;
-    console.log(cityName);
-    let apiKey = '4970e4f266675063af77ad454f45ebd6';
+    console.log("cityName: ", cityName);
+    
+    let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    req(url, function (err, response, body) {
+    
+    
+    req.get(url, function(err, response, body) {
       if (err) {
-        console.log('error:', error);
-        agent.add('Error while getting weather report');
+        console.log("error:", error);
+        agent.add("Error while getting weather report");
       } else {
-        let weather = JSON.parse(body)
-        let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} humidity !`;
-        console.log( 'weather:',message);
+        let weather = JSON.parse(body);
+        let message = `It's ${weather.main.temp} degrees and ${
+          weather.main.humidity
+        } humidity !`;
+        console.log("weather:", message);
         let temp = weather.main.temp;
-        console.log( 'temperature:', temp);
-       
+        console.log("temperature:", temp);
+
         agent.add(`The weather for the city ${cityName} is: ${temp} degrees `);
       }
       // agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
     });
-
   }
-
 
   function welcome(agent) {
     agent.add(`Good day! What can I do for you today?`);
@@ -65,12 +63,10 @@ expressApp.post("/webhook", function (request, response, next) {
   intentMap.set("Find weather", weatherFinder);
 
   agent.handleRequest(intentMap);
-
 });
-expressApp.listen(process.env.PORT || 3000, function () {
+expressApp.listen(process.env.PORT || 3000, function() {
   console.log("app is running in 3000");
 });
-
 
 // expressApp.get("/", function(req, res) {
 //   res.send("hello world");
@@ -96,10 +92,10 @@ expressApp.listen(process.env.PORT || 3000, function () {
 //         let currentConditions = conditions['weatherDesc'][0]['value'];
 
 //         // Create response
-//         let output = `Current conditions in the ${location['type']} 
+//         let output = `Current conditions in the ${location['type']}
 //         ${location['query']} are ${currentConditions} with a projected high of
-//         ${forecast['maxtempC']}°C or ${forecast['maxtempF']}°F and a low of 
-//         ${forecast['mintempC']}°C or ${forecast['mintempF']}°F on 
+//         ${forecast['maxtempC']}°C or ${forecast['maxtempF']}°F and a low of
+//         ${forecast['mintempC']}°C or ${forecast['mintempF']}°F on
 //         ${forecast['date']}.`;
 
 //         // Resolve the promise with the output text

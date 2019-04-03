@@ -21,28 +21,23 @@ const expressApp = express().use(bodyParser.json());
 expressApp.post("/webhook", function(request, response, next) {
   const agent = new WebhookClient({ request: request, response: response });
 
- async function weatherFinder(agent) {
+  function weatherFinder(agent) {
     const cityName = agent.parameters.city;
     console.log("cityName: ", cityName);
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
 
-    let dResponse = await req.get(url, function(err, response, body) {
-      if (dResponse.err) {
-        console.log("error:", err);
-        agent.add("Error while getting weather report");
-      } else {
+     req.get(url, function(err, response, body) {
+    
         let weather = JSON.parse(body);
-        let message = `It's ${weather.main.temp} degrees and ${
-          weather.main.humidity
-        } humidity !`;
+        let message = `It's ${weather.main.temp} degrees and ${ weather.main.humidity} humidity !`;
         console.log("weather:", message);
         let temp = weather.main.temp;
         console.log("temperature:", temp);
 
         agent.add(`The weather for the city ${cityName} is: ${temp} degrees `);
-      }
+      
       // agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
     });
   }

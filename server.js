@@ -29,15 +29,18 @@ expressApp.post("/webhook", function(request, response, next) {
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
 
      req.get(url, function(err, response, body) {
-    
+      if (err) {
+        console.log("error:", err);
+        agent.add("Error while getting weather report");
+      } else {
         let weather = JSON.parse(body);
         let message = `It's ${weather.main.temp} degrees and ${ weather.main.humidity} humidity !`;
         console.log("weather:", message);
         let temp = weather.main.temp;
         console.log("temperature:", temp);
 
-        agent.add(`The weather for the city  degrees `);
-      
+        agent.add(`The weather for the city ${cityName} is: ${temp} degrees `);
+      }
       // agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
     });
   }

@@ -34,12 +34,13 @@ expressApp.post("/webhook", function (request, response, next) {
     req(url, function (err, response, body) {
       if (err) {
         console.log('error:', error);
+        agent.add('Error while getting weather report');
       } else {
         let weather = JSON.parse(body)
         let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} humidity !`;
-        console.log(message);
+        console.log( 'weather:',message);
         let temp = weather.main.temp;
-        console.log(temp);
+        console.log( 'temperature:', temp);
        
         agent.add(`The weather for the city ${cityName} is: ${temp} degrees `);
       }

@@ -32,8 +32,8 @@ expressApp.post("/webhook", function(request, response, next) {
     
     
      http.get(url, function(err, response, body) {
-      if (error) {
-        console.log("error:", error);
+      if (err) {
+        console.log("error:", err);
         agent.add("Error while getting weather report");
       } else {
         let weather = JSON.parse(body);

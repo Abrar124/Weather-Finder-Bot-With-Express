@@ -22,15 +22,13 @@ expressApp.post("/webhook", function(request, response, next) {
   const agent = new WebhookClient({ request: request, response: response });
 
   function weatherFinder(agent) {
-
     const cityName = agent.parameters.city;
     console.log("cityName: ", cityName);
-    
+
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    
-    
-   return req.get(url, function(err, response, body) {
+
+    return req.get(url, function(err, response, body) {
       if (err) {
         console.log("error:", err);
         agent.add("Error while getting weather report");
@@ -42,7 +40,6 @@ expressApp.post("/webhook", function(request, response, next) {
         console.log("weather:", message);
         let temp = weather.main.temp;
         console.log("temperature:", temp);
-        console.log(dresponse);
 
         agent.add(`The weather for the city ${cityName} is: ${temp} degrees `);
       }

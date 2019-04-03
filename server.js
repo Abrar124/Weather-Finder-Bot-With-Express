@@ -32,7 +32,7 @@ expressApp.post("/webhook", function(request, response, next) {
     
     
      http.get(url, function(err, response, body) {
-      if (err) {
+      if (error) {
         console.log("error:", error);
         agent.add("Error while getting weather report");
       } else {

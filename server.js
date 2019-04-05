@@ -22,25 +22,16 @@ expressApp.post("/webhook", function(request, response, next) {
         agent.add("Error while getting weather report");
       } else {
         let weather = JSON.parse(body);
-        let message = `It's ${weather.main.temp} degrees and ${
-          weather.main.humidity
-        } humidity !`;
+        let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} humidity !`;
         console.log("weather:", message);
         let temp = weather.main.temp;
         console.log("temperature:", temp);
         console.log("cityName: ", cityName);
         console.log("Success:");
 
-        // agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
+        agent.add(`The weather for the city ${cityName} is: ${temp} `);
       }
-    })
-      .then(() => {
-        console.log("Then function called", cityName);
-        agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
-      })
-      .catch(err => {
-        console.log("Error Error error", err);
-      });
+    });
   }
 
   function welcome(agent) {

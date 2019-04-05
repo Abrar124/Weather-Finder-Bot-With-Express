@@ -15,7 +15,7 @@ expressApp.post("/webhook", function(request, response, next) {
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    agent.add(`The weather for the city ${cityName} is: ?? ...... `);
+    // agent.add(`The weather for the city ${cityName} is: ?? ...... `);
     req.get(url, function(err, response, body) {
       if (err) {
         console.log("error:", err);
@@ -35,6 +35,7 @@ expressApp.post("/webhook", function(request, response, next) {
       }
       // agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
     });
+    agent.add(`The weather for the city ${cityName} is: ${message} ...... `);
   }
 
   function welcome(agent) {

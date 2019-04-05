@@ -31,12 +31,16 @@ expressApp.post("/webhook", function(request, response, next) {
         console.log("cityName: ", cityName);
         console.log("Success:");
 
-        agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
+        // agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
       }
-     
-    });
-    // return wait
-    // agent.add(`The weather for the city ${cityName} is: ${message}...... `);
+    })
+      .then(() => {
+        console.log("Then function called", cityName);
+        agent.add(`The weather for the city ${cityName} is: 0.0000 degrees `);
+      })
+      .catch(err => {
+        console.log("Error Error error", err);
+      });
   }
 
   function welcome(agent) {

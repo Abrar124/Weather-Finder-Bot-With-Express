@@ -17,7 +17,7 @@ expressApp.post("/webhook", function(request, response, next) {
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
     // agent.add(`The weather for the city ${cityName} is: ?? ...... `);
    
-    return req.get(url, function(err, response, body,) {
+     req(url, function(err, response, body,) {
       if (err) {
         console.log("error:", err);
         agent.add("Error while getting weather report");

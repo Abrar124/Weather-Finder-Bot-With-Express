@@ -16,11 +16,8 @@ expressApp.post("/webhook", function(request, response, next) {
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
     // agent.add(`The weather for the city ${cityName} is: ?? ...... `);
 
-    req(url, function(err, response, body) {
-      if (err) {
-        console.log("error:", err);
-        agent.add("Error while getting weather report");
-      } else {
+    req(url)
+      .then(() => {
         let weather = JSON.parse(body);
         let message = `It's ${weather.main.temp} degrees and ${
           weather.main.humidity
@@ -31,8 +28,10 @@ expressApp.post("/webhook", function(request, response, next) {
         console.log("cityName: ", cityName);
         agent.add(`The weather for the city ${cityName} is: ${temp} `);
         console.log("Success:");
-      }
-    });
+      })
+      .catch(err => {
+        console.log("Error getting documents", err);
+      });
   }
 
   function welcome(agent) {

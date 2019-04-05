@@ -1,18 +1,7 @@
-// const apiKey = "4970e4f266675063af77ad454f45ebd6";
-// const cityName = 'karachi';
-
-// url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-// request(url, function (err, response, body) {
-//   if(err)
-//     { console.log('error:', error);
-//    } else {
-//      let weather = JSON.parse(body)
-//      let message = `It's ${weather.main.temp} degrees and ${weather.main.humidity} in ${weather.name}!`;
-//      console.log(message);}
-//  });
 const express = require("express");
 const bodyParser = require("body-parser");
 var req = require("request");
+
 
 const { WebhookClient } = require("dialogflow-fulfillment");
 

@@ -33,8 +33,10 @@ expressApp.post("/webhook", function(request, response, next) {
 
         // agent.add(`The weather for the city ${wait} is: 0.0000 degrees `);
       }
+      return wait
     });
-    agent.add(`The weather for the city ${cityName} is: ${message} ...... `);
+    // return wait
+    agent.add(`The weather for the city ${cityName} is: ${message}...... `);
   }
 
   function welcome(agent) {

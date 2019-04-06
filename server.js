@@ -31,17 +31,8 @@ expressApp.post("/webhook", function(request, response, next) {
         agent.add(`The weather for the city ${cityName} is: ${temp} `);
         console.log("Success:");
       
-    })
-      .then(() => {        
-        // console.log(aw)
-        console.log('City Name:', cityName);
-        agent.add(`The weather for the city ${cityName} is:  `);
-        console.log("Success:");
-      })
-      .catch(err => {
-        console.log("Error getting documents", err);
-        agent.add(`Error from server `);
-      });
+    });
+      
   }
 
   function welcome(agent) {

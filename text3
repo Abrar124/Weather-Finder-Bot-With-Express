@@ -1,0 +1,33 @@
+async function weatherFinder(agent) {
+    const cityName = agent.parameters.city;
+
+    let apiKey = "4970e4f266675063af77ad454f45ebd6";
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
+    // agent.add(`The weather for the city ${cityName} is: ?? ...... `);
+
+    await rp.get(url, function(err, response, body) {
+      
+        let weather = JSON.parse(body);
+        let message = `It's ${weather.main.temp} degrees and ${
+          weather.main.humidity
+        } humidity !`;
+        console.log("weather:", message);
+        let temp = weather.main.temp;
+        console.log("temperature:", temp);
+        
+        console.log('City Name:', cityName);
+        agent.add(`The weather for the city ${cityName} is: ${temp} `);
+        console.log("Success:");
+      
+    })
+      .then(() => {        
+        // console.log(aw)
+        console.log('City Name:', cityName);
+        agent.add(`The weather for the city ${cityName} is:  `);
+        console.log("Success:");
+      })
+      .catch(err => {
+        console.log("Error getting documents", err);
+        agent.add(`Error from server `);
+      });
+  }

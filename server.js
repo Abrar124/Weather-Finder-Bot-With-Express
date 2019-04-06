@@ -18,7 +18,10 @@ expressApp.post("/webhook", function(request, response, next) {
     // agent.add(`The weather for the city ${cityName} is: ?? ...... `);
 
     await rp.get(url, function(err, response, body) {
-      
+      if (err) {
+        console.log("error:", err);
+        agent.add("Error while getting weather report");
+      } else {
         let weather = JSON.parse(body);
         let message = `It's ${weather.main.temp} degrees and ${
           weather.main.humidity
@@ -30,7 +33,7 @@ expressApp.post("/webhook", function(request, response, next) {
         console.log('City Name:', cityName);
         agent.add(`The weather for the city ${cityName} is: ${temp} `);
         console.log("Success:");
-      
+      }
     });
       
   }

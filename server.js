@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 var req = require("request");
+var rp = require('request-promise');
 
 const { WebhookClient } = require("dialogflow-fulfillment");
 
@@ -16,7 +17,7 @@ expressApp.post("/webhook", function(request, response, next) {
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
     // agent.add(`The weather for the city ${cityName} is: ?? ...... `);
 
-   return req(url).promise()
+   rp(url)
       .then(() => {
         let weather = JSON.parse(body);
         let message = `It's ${weather.main.temp} degrees and ${
@@ -31,6 +32,7 @@ expressApp.post("/webhook", function(request, response, next) {
       })
       .catch(err => {
         console.log("Error getting documents", err);
+        agent.add(`Error from server `);
       });
   }
 

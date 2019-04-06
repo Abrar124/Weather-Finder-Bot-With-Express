@@ -27,7 +27,7 @@ expressApp.post("/webhook", function(request, response, next) {
         let temp = weather.main.temp;
         console.log("temperature:", temp);
         
-        agent.add(`The weather for the city ${cityName} is: .. `);
+        agent.add(`The weather for the city ${cityName} is: ${temp} `);
       
     })
       .then(() => {        

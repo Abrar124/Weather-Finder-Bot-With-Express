@@ -31,7 +31,7 @@ expressApp.post("/webhook", function(request, response, next) {
       
     })
       .then(() => {        
-        console.log(aw)
+        // console.log(aw)
         console.log('City Name:', cityName);
         agent.add(`The weather for the city ${cityName} is:  `);
         console.log("Success:");

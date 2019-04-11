@@ -50,9 +50,7 @@ expressApp.post("/webhook", function(request, response, next) {
         cityName = city;
     }
     else {
-        res.send({
-            fulfillmentText: `Please enter the city name`
-        })
+        agent.add(`Please mention your city name`);
         return
     }
 

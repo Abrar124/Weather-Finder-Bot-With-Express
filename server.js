@@ -11,21 +11,16 @@ expressApp.post("/webhook", function(request, response, next) {
   const agent = new WebhookClient({ request: request, response: response });
 
   async function weatherFinder(agent) {
-   
-    const tempContext = agent.getContext('location');
-    console.log("return Context is :", tempContext)
+    const tempContext = agent.getContext("location");
+    console.log("return Context is :", tempContext);
     var cityName;
     if (agent.parameters.city) {
-        cityName = agent.parameters.city;
+      cityName = agent.parameters.city;
+    } else if (tempContext.parameters.contextcity) {
+      cityName = tempContext.parameters.contextcity;
+    } else {
+      agent.add(`Please Mention your city here `);
     }
-    else if (tempContext.parameters.contextcity) {
-        cityName = tempContext.parameters.contextcity;
-    }
-    else {
-        agent.add(`Please Mention your city here `);
-        
-    }
-    
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
@@ -46,10 +41,10 @@ expressApp.post("/webhook", function(request, response, next) {
 
         console.log("City Name:", cityName);
         agent.setContext({
-            name: 'location',
-            lifespan: 5,
-            parameters:{"contextcity": cityName}
-          });
+          name: "location",
+          lifespan: 5,
+          parameters: { contextcity: cityName }
+        });
         agent.add(`The weather for the city ${cityName} is: ${message} `);
         console.log("Success:");
       }
@@ -57,24 +52,21 @@ expressApp.post("/webhook", function(request, response, next) {
   }
 
   async function humidityFinder(agent) {
-    const tempContext = agent.getContext('location');
-    console.log("return Context is :", tempContext)
+    const tempContext = agent.getContext("location");
+    console.log("return Context is :", tempContext);
     var cityName;
     if (agent.parameters.city) {
-        cityName = agent.parameters.city;
+      cityName = agent.parameters.city;
+    } else if (tempContext.parameters.contextcity) {
+      cityName = tempContext.parameters.contextcity;
+    } else {
+      agent.add(`Mention your city here `);
+      return;
     }
-    else if (tempContext.parameters.contextcity) {
-        cityName = tempContext.parameters.contextcity;
-    }
-    else {
-        agent.add(`Mention your city here `);
-        return;
-    }
-
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    
+
     await rp.get(url, function(err, response, body) {
       if (err) {
         console.log("error:", err);
@@ -84,7 +76,11 @@ expressApp.post("/webhook", function(request, response, next) {
         let humidity = weather.main.humidity;
         console.log("City Name:", cityName);
         console.log("Humidity:", humidity);
-
+        agent.setContext({
+          name: "location",
+          lifespan: 5,
+          parameters: { contextcity: cityName }
+        });
         agent.add(`In ${cityName} humidity is: ${humidity}%`);
         console.log("Success:");
         return;

@@ -68,7 +68,7 @@ expressApp.post("/webhook", function(request, response, next) {
     }
     else {
         agent.add(`Mention your city here `);
-        
+        return;
     }
 
 

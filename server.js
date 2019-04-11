@@ -38,8 +38,23 @@ expressApp.post("/webhook", function(request, response, next) {
   }
 
   async function humidityFinder(agent) {
-    const cityName = agent.parameters.city;
+    // const cityName = agent.parameters.city;
+    const eCity = agent.parameters.eCity;
+    const city = agent.parameters.city;
+    var cityName;
 
+    if (city == "") {
+        cityName = eCity;
+    }
+    else if (city == agent.parameters.city) {
+        cityName = city;
+    }
+    else {
+        res.send({
+            fulfillmentText: `Please enter the city name`
+        })
+        return
+    }
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;

@@ -56,7 +56,7 @@ expressApp.post("/webhook", function(request, response, next) {
     }
     else {
         agent.add(`Mention your city here `);
-        return
+        
     }
 
 
@@ -75,7 +75,7 @@ expressApp.post("/webhook", function(request, response, next) {
 
         agent.add(`In ${cityName} humidity is: ${humidity}%`);
         console.log("Success:");
-        return
+        
       }
     });
   }

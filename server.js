@@ -38,6 +38,33 @@ expressApp.post("/webhook", function(request, response, next) {
       
   }
 
+
+  async function humidityFinder(agent) {
+    const cityName = agent.parameters.city;
+
+    let apiKey = "4970e4f266675063af77ad454f45ebd6";
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
+    // agent.add(`The weather for the city ${cityName} is: ?? ...... `);
+
+    await rp.get(url, function(err, response, body) {
+      if (err) {
+        console.log("error:", err);
+        agent.add("Error while getting weather report");
+      } else {
+        let weather = JSON.parse(body);
+        let humidity = weather.main.humidity;
+        console.log('City Name:', cityName);
+        console.log("Humidity:", humidity);
+        
+        
+        agent.add(`In ${cityName} humidity is: ${humidity} `);
+        console.log("Success:");
+      }
+    });
+      
+  }
+
+
   function welcome(agent) {
     agent.add(`Good day! What can I do for you today?`);
   }
@@ -50,6 +77,7 @@ expressApp.post("/webhook", function(request, response, next) {
   intentMap.set("Default Welcome Intent", welcome);
   intentMap.set("Default Fallback Intent", fallback);
   intentMap.set("Find weather", weatherFinder);
+  intentMap.set("Humidity", humidityFinder);
 
   agent.handleRequest(intentMap);
 });

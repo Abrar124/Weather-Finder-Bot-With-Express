@@ -87,7 +87,7 @@ expressApp.post("/webhook", function(request, response, next) {
 
         agent.add(`In ${cityName} humidity is: ${humidity}%`);
         console.log("Success:");
-        
+        return;
       }
     });
   }

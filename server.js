@@ -20,6 +20,7 @@ expressApp.post("/webhook", function(request, response, next) {
       cityName = tempContext.parameters.contextcity;
     } else {
       agent.add(`Please Mention your city here `);
+      return;
       
     }
 
@@ -63,6 +64,7 @@ expressApp.post("/webhook", function(request, response, next) {
       cityName = tempContext.parameters.contextcity;
     } else {
       agent.add(`Mention your city here `);
+      return;
       
     }
 

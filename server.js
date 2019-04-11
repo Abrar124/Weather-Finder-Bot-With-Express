@@ -49,10 +49,10 @@ expressApp.post("/webhook", function(request, response, next) {
     console.log("return Context is :", tempContext)
     const cityName;
     if (agent.parameters.city) {
-        cityName = agent.parameters.city
+        cityName = agent.parameters.city;
     }
     else if (tempContext.parameters.contextcity) {
-        cityName = tempContext.parameters.contextcity
+        cityName = tempContext.parameters.contextcity;
     }
     else {
         agent.add(`Mention your city here `);

@@ -11,8 +11,7 @@ expressApp.post("/webhook", function(request, response, next) {
   const agent = new WebhookClient({ request: request, response: response });
 
   async function weatherFinder(agent) {
-     var contextValue =  agent.context.get('location');
-    console.log("context are: ", contextValue);
+   
     const cityName = agent.parameters.city;
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";

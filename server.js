@@ -35,7 +35,7 @@ expressApp.post("/webhook", function(request, response, next) {
         agent.setContext({
             name: 'location',
             lifespan: 5,
-            parameters:{"city": "Karachi"}
+            parameters:{"city": cityName}
           });
         agent.add(`The weather for the city ${cityName} is: ${message} `);
         console.log("Success:");
@@ -45,7 +45,8 @@ expressApp.post("/webhook", function(request, response, next) {
 
   async function humidityFinder(agent) {
     const tempContext = agent.getContext('location');
-    const cityName = agent.parameters.city;
+    console.log("return Context is :", tempContext)
+    const cityName = tempContext.parameters.city;
    
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";

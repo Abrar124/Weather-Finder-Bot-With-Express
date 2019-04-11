@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 var req = require("request");
-var rp = require('request-promise');
+var rp = require("request-promise");
 
 const { WebhookClient } = require("dialogflow-fulfillment");
 
@@ -10,7 +10,7 @@ const expressApp = express().use(bodyParser.json());
 expressApp.post("/webhook", function(request, response, next) {
   const agent = new WebhookClient({ request: request, response: response });
 
-   async function weatherFinder(agent) {
+  async function weatherFinder(agent) {
     const cityName = agent.parameters.city;
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
@@ -29,23 +29,21 @@ expressApp.post("/webhook", function(request, response, next) {
         console.log("weather:", message);
         let temp = weather.main.temp;
         console.log("temperature:", temp);
-        
-        console.log('City Name:', cityName);
+
+        console.log("City Name:", cityName);
         agent.add(`The weather for the city ${cityName} is: ${message} `);
         console.log("Success:");
       }
     });
-      
   }
-
 
   async function humidityFinder(agent) {
     const cityName = agent.parameters.city;
 
+
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
-    // agent.add(`The weather for the city ${cityName} is: ?? ...... `);
-
+    
     await rp.get(url, function(err, response, body) {
       if (err) {
         console.log("error:", err);
@@ -53,17 +51,14 @@ expressApp.post("/webhook", function(request, response, next) {
       } else {
         let weather = JSON.parse(body);
         let humidity = weather.main.humidity;
-        console.log('City Name:', cityName);
+        console.log("City Name:", cityName);
         console.log("Humidity:", humidity);
-        
-        
-        agent.add(`In ${cityName} humidity is: ${humidity} `);
+
+        agent.add(`In ${cityName} humidity is: ${humidity}%`);
         console.log("Success:");
       }
     });
-      
   }
-
 
   function welcome(agent) {
     agent.add(`Good day! What can I do for you today?`);
@@ -84,4 +79,3 @@ expressApp.post("/webhook", function(request, response, next) {
 expressApp.listen(process.env.PORT || 3000, function() {
   console.log("app is running in 3000");
 });
-

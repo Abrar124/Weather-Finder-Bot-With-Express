@@ -11,6 +11,7 @@ expressApp.post("/webhook", function(request, response, next) {
   const agent = new WebhookClient({ request: request, response: response });
 
   async function weatherFinder(agent) {
+    console.log("context are: ", agent.context.get('location'));
     const cityName = agent.parameters.city;
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
@@ -38,21 +39,8 @@ expressApp.post("/webhook", function(request, response, next) {
   }
 
   async function humidityFinder(agent) {
-    // const cityName = agent.parameters.city;
-    const eCity = agent.parameters.eCity;
-    const city = agent.parameters.city;
-    var cityName;
-
-    if (city == "") {
-        cityName = eCity;
-    }
-    else if (city == agent.parameters.city) {
-        cityName = city;
-    }
-    else {
-        agent.add(`Please mention your city name`);
-        return
-    }
+    const cityName = agent.parameters.city;
+   
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;

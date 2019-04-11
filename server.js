@@ -12,7 +12,19 @@ expressApp.post("/webhook", function(request, response, next) {
 
   async function weatherFinder(agent) {
    
-    const cityName = agent.parameters.city;
+    const tempContext = agent.getContext('location');
+    console.log("return Context is :", tempContext)
+    var cityName;
+    if (agent.parameters.city) {
+        cityName = agent.parameters.city;
+    }
+    else if (tempContext.parameters.contextcity) {
+        cityName = tempContext.parameters.contextcity;
+    }
+    else {
+        agent.add(`Please Mention your city here `);
+        
+    }
     
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";

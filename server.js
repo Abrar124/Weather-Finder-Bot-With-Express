@@ -16,11 +16,11 @@ expressApp.post("/webhook", function(request, response, next) {
     var cityName;
     if (agent.parameters.city) {
       cityName = agent.parameters.city;
-    } else if (tempContext.parameters.contextcity) {
+    } else if ( tempContext && tempContext.parameters.contextcity ) {
       cityName = tempContext.parameters.contextcity;
     } else {
       agent.add(`Please Mention your city here `);
-      return;
+      
     }
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
@@ -59,11 +59,11 @@ expressApp.post("/webhook", function(request, response, next) {
     var cityName;
     if (agent.parameters.city) {
       cityName = agent.parameters.city;
-    } else if (tempContext.parameters.contextcity) {
+    } else if (tempContext && tempContext.parameters.contextcity ) {
       cityName = tempContext.parameters.contextcity;
     } else {
       agent.add(`Mention your city here `);
-      return;
+      
     }
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";

@@ -13,6 +13,7 @@ expressApp.post("/webhook", function(request, response, next) {
   async function weatherFinder(agent) {
    
     const cityName = agent.parameters.city;
+    
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
@@ -47,7 +48,17 @@ expressApp.post("/webhook", function(request, response, next) {
     const tempContext = agent.getContext('location');
     console.log("return Context is :", tempContext)
     const cityName = tempContext.parameters.city;
-   
+    if (agent.parameters.city) {
+        cityName = agent.parameters.city
+    }
+    else if (tempContext.parameters.city) {
+        cityName = tempContext.parameters.city
+    }
+    else {
+        agent.add(`Mention your city here `);
+        return
+    }
+
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&APPID=${apiKey}`;
@@ -64,6 +75,7 @@ expressApp.post("/webhook", function(request, response, next) {
 
         agent.add(`In ${cityName} humidity is: ${humidity}%`);
         console.log("Success:");
+        return
       }
     });
   }

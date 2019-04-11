@@ -20,6 +20,7 @@ expressApp.post("/webhook", function(request, response, next) {
       cityName = tempContext.parameters.contextcity;
     } else {
       agent.add(`Please Mention your city here `);
+      return;
     }
 
     let apiKey = "4970e4f266675063af77ad454f45ebd6";
@@ -47,6 +48,7 @@ expressApp.post("/webhook", function(request, response, next) {
         });
         agent.add(`The weather for the city ${cityName} is: ${message} `);
         console.log("Success:");
+        return;
       }
     });
   }

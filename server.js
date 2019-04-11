@@ -47,7 +47,7 @@ expressApp.post("/webhook", function(request, response, next) {
   async function humidityFinder(agent) {
     const tempContext = agent.getContext('location');
     console.log("return Context is :", tempContext)
-    const cityName = tempContext.parameters.contextcity;
+    const cityName;
     if (agent.parameters.city) {
         cityName = agent.parameters.city
     }

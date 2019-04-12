@@ -1,0 +1,46 @@
+{
+  "id": "d5b3144a-7032-4d2d-a26e-08fc52e0a0cd",
+  "name": "Find weather",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "weather",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "a2ba010a-f10a-40ac-98c0-8812f657c193",
+          "required": false,
+          "dataType": "@sys.geo-city",
+          "name": "city",
+          "value": "$city",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "please mention city name to get weather detail"
+            }
+          ],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": "Something went wrong while getting weather data"
+        }
+      ],
+      "defaultResponsePlatforms": {
+        "facebook": false
+      },
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": true,
+  "lastUpdate": 1551875517,
+  "fallbackIntent": false,
+  "events": []
+}

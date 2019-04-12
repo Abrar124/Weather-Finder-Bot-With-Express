@@ -1,0 +1,36 @@
+{
+  "id": "1c953ea4-7b8f-458f-a11c-ddc3b3d14022",
+  "name": "Humidity",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "e493e02a-f3ca-4d5c-98d4-c1691365e4a8",
+          "required": false,
+          "dataType": "@sys.geo-city",
+          "name": "city",
+          "value": "$city",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": "Something wrong while getting data for Humidity"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": true,
+  "fallbackIntent": false,
+  "events": []
+}

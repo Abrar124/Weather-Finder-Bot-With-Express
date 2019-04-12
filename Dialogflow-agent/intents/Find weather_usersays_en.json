@@ -1,0 +1,150 @@
+[
+  {
+    "id": "0bdc5f74-ec6a-4f88-b259-9625cd9462d8",
+    "data": [
+      {
+        "text": "tell me about weather",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "72415bb4-ea40-4e5e-90d1-3ac0c1f0b2fc",
+    "data": [
+      {
+        "text": "london",
+        "alias": "city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      },
+      {
+        "text": " weather",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "78952f75-1dc3-4c41-9084-f746f3e3b93d",
+    "data": [
+      {
+        "text": "weather in ",
+        "userDefined": false
+      },
+      {
+        "text": "new york",
+        "alias": "city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551875517
+  },
+  {
+    "id": "70d279db-b32e-468c-be5b-e402c0a142dc",
+    "data": [
+      {
+        "text": "what is the weather in ",
+        "userDefined": false
+      },
+      {
+        "text": "washington",
+        "alias": "city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551875517
+  },
+  {
+    "id": "296fd8fc-9942-49bd-a3a8-ffd84918fcf2",
+    "data": [
+      {
+        "text": "show my weather",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551870517
+  },
+  {
+    "id": "215bf0a9-0523-4b56-8d88-46de83c917fa",
+    "data": [
+      {
+        "text": "find my weather",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551870517
+  },
+  {
+    "id": "314f08b8-a299-4709-ab7f-1ccde42560b5",
+    "data": [
+      {
+        "text": "what is my weather",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551870517
+  },
+  {
+    "id": "48651117-b8cd-4a79-90b8-52e7c7c3fdae",
+    "data": [
+      {
+        "text": "my weather",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551870517
+  },
+  {
+    "id": "3c0f3faa-9103-452f-8831-7c6e148af414",
+    "data": [
+      {
+        "text": "weather",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551870517
+  },
+  {
+    "id": "b5e7f0ac-8e3e-4e1d-82e4-ecbdecfe9333",
+    "data": [
+      {
+        "text": "find weather",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1551870517
+  },
+  {
+    "id": "ad1489bc-31ad-4206-bc4f-7fc8badab308",
+    "data": [
+      {
+        "text": "find",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 1,
+    "updated": 1551870517
+  }
+]

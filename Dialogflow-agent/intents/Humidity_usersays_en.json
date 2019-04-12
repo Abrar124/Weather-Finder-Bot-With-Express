@@ -1,0 +1,97 @@
+[
+  {
+    "id": "9fbae5f2-9153-4660-a085-94927a76e312",
+    "data": [
+      {
+        "text": "Lahore",
+        "alias": "city",
+        "meta": "@sys.geo-city",
+        "userDefined": true
+      },
+      {
+        "text": " humidity",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "23497224-59d7-4b19-a8ee-64e0849d0c85",
+    "data": [
+      {
+        "text": "Canada",
+        "alias": "city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      },
+      {
+        "text": " humidity",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "0957dd4f-433e-4751-a5c0-ae514c14b2ae",
+    "data": [
+      {
+        "text": "london",
+        "alias": "city",
+        "meta": "@sys.geo-city",
+        "userDefined": true
+      },
+      {
+        "text": " humidity",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "450c0e6c-a5ac-43ee-b0fc-4015b5f705d1",
+    "data": [
+      {
+        "text": "what is the humidity",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "d1f024ff-3c66-4817-82d3-6cb954801462",
+    "data": [
+      {
+        "text": "tell me about humidity",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "81897c01-d2c0-4b01-95e5-0a525481c5ae",
+    "data": [
+      {
+        "text": "what about humidity",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "effda63c-dfd3-40aa-939c-0d8f61b8f781",
+    "data": [
+      {
+        "text": "humidity",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  }
+]
